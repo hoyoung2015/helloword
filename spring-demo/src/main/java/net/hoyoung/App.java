@@ -1,5 +1,6 @@
 package net.hoyoung;
 
+import net.hoyoung.service.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 

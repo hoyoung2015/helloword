@@ -17,7 +17,7 @@ public class AppTest
      */
     public AppTest( String testName )
     {
-        super( testName );
+        super(testName);
     }
 
     /**
@@ -33,6 +33,9 @@ public class AppTest
      */
     public void testApp()
     {
-        assertTrue( true );
+        double a = 3*0.1;
+        double b = 0.3;
+        System.out.println(3 * 0.1 == 0.3);
+        System.out.println(a == b);
     }
 }
