@@ -2,6 +2,7 @@ package net.hoyoung.sort;
 
 import net.hoyoung.util.Printer;
 
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -11,48 +12,41 @@ import java.util.Random;
  * 时间复杂度O(nlogn)
  */
 public class QuickSort {
-    public static void main(String[] args) {
-//        int unsortedArray[] = new int[]{6, 5, 3,6, 1, 8, 7, 2, 4};
-        int unsortedArray[] = new int[]{6, 1,2,3,4,5,6,9,7,6,8};
-        quickSort(unsortedArray);
-        System.out.println("After	sort:	");
-        for (int item : unsortedArray) {
-            System.out.print(item + "	");
-        }
-    }
-
-    public static void quickSort2(int[] array, int l, int u) {
-        for (int item : array) {
-            System.out.print(item + "	");
-        }
-        System.out.println();
-        if (l >= u) return;
-        int pivot = array[l];
-        int left = l + 1;
-        int right = u;
-        while (left <= right) {
-            while (left <= right && array[left] < pivot) {
-                left++;
-            }
-            while (left <= right && array[right] >= pivot) {
-                right--;
-            }
-            if (left > right) break;
-            //	swap	array[left]	with	array[right]	while	left	<=	right
-            int temp = array[left];
-            array[left] = array[right];
-            array[right] = temp;
-        }
-                                 /*	swap	the	smaller	with	pivot	*/
-        int temp = array[right];
-        array[right] = array[l];
-        array[l] = temp;
-        quickSort2(array, l, right - 1);
-        quickSort2(array, right + 1, u);
-    }
-
-    public static void quickSort(int[] array) {
-        quickSort2(array, 0, array.length - 1);
-    }
-
+	public int getMiddle(Integer[] list, int low, int high) {
+		int tmp = list[low];    //数组的第一个作为中轴
+		while (low < high) {
+			while (low < high && list[high] > tmp) {
+				high--;
+			}
+			list[low] = list[high];   //比中轴小的记录移到低端
+			while (low < high && list[low] < tmp) {
+				low++;
+			}
+			list[high] = list[low];   //比中轴大的记录移到高端
+		}
+		list[low] = tmp;              //中轴记录到尾
+		return low;                   //返回中轴的位置
+	}
+	public void _quickSort(Integer[] list, int low, int high) {
+		if (low < high) {
+			int middle = getMiddle(list, low, high);  //将list数组进行一分为二
+			_quickSort(list, low, middle - 1);        //对低字表进行递归排序
+			_quickSort(list, middle + 1, high);       //对高字表进行递归排序
+		}
+	}
+	public void quick(Integer[] str) {
+		if (str.length > 0) {    //查看数组是否为空
+			_quickSort(str, 0, str.length - 1);
+		}
+	}
+	public static void main(String[] args) {  
+        // TODO Auto-generated method stub  
+         Integer[] list={34,3,53,2,23,7,14,10};  
+         QuickSort qs=new QuickSort();  
+         qs.quick(list);  
+         for(int i=0;i<list.length;i++){  
+             System.out.print(list[i]+" ");  
+         }  
+         System.out.println();  
+    }  
 }
