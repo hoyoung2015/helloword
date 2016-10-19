@@ -36,8 +36,25 @@ print(L[::20])
 print(L[:])
 
 # 带下标迭代
-for i,v in enumerate(['a','b','c']):
-    print(i,v)
+for i, v in enumerate(['a', 'b', 'c']):
+    print(i, v)
+# 上面等价于
+for x, y in [(1, 1), (2, 4), (3, 9)]:
+    print(x, y)
+
+# 列表生成式
+L = [x * x for x in range(5)]
+# [0, 1, 4, 9, 16]
+L = [x * x for x in range(5) if x % 2 == 0]
+# [0, 4, 16]
+L = [m+n for m in '12' for n in 'abc']
+# ['1a', '1b', '1c', '2a', '2b', '2c']
+
+# 列出当前目录中的文件
+import os
+L = [d for d in os.listdir('.')]
+
+
 
 # tuple一旦初始化就不能修改
 

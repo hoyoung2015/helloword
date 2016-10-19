@@ -12,15 +12,20 @@ for x in d:
 # 迭代value
 for x in d.values():
     print(x)
+for k, v in d.items():
+    print(k, '=', v)
+
+# 列表生成式
+L = [k + '=' + str(v) for k, v in d.items()]
+# ['Bob=75', 'Michael=95', 'Tracy=85']
 
 d['Adam'] = 67
-
 # 判断key是否存在
 print('Thomas' in d)
 # 如果key不存在返回None
 print(d.get('Thomas'))
 # 如果key不存在返回自定义的-1
-print(d.get('Thomas',-1))
+print(d.get('Thomas', -1))
 # 删除,key不存在会报错
 print(d.pop('Adam'))
 
