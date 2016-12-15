@@ -15,6 +15,7 @@ public class App
 
         ActorSystem system = ActorSystem.create("hello-akka");
 //        system.actorOf(Props)
+        system.shutdown();
     }
     public static class Greeter extends UntypedActor{
 
